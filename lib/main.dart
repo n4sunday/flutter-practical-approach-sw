@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
 
-void main()=> runApp(MyApp());
+void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Test Row and Column",
-      home: Scaffold(
-        backgroundColor: Colors.yellowAccent,
-        appBar: AppBar(title: Text('Hello Flutter'),),
-        body: Row(children: <Widget>[
-
-        ],)
-      )
-    );
+        title: "Test Row and Column",
+        home: Scaffold(
+            backgroundColor: Colors.yellow[300],
+            appBar: AppBar(
+              title: Text('Hello Flutter'),
+            ),
+            body: Container(
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[BlueBox(), BlueBox(), BlueBox()],
+                ))));
   }
 }
 
-class BlueBox extends StatelessWidget{
+class BlueBox extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       width: 100,
       height: 100,
@@ -32,41 +35,16 @@ class BlueBox extends StatelessWidget{
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class BiggerBlueBox extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
+      height: 100,
+      decoration: BoxDecoration(color: Colors.blue, border: Border.all()),
+    );
+  }
+}
 
 // import 'package:flutter/material.dart';
 
