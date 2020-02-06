@@ -5,54 +5,36 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Test Row and Column",
+    return (MaterialApp(
+        title: 'Text Text Widget',
         home: Scaffold(
-            backgroundColor: Colors.yellow[300],
-            appBar: AppBar(
-              title: Text('Hello Flutter'),
-            ),
+            appBar: AppBar(title: Text('Text Widget')),
+            backgroundColor: Colors.yellowAccent,
             body: Container(
                 color: Colors.white,
-                height: 200,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
-                    BlueBox(),
-                    BiggerBlueBox(),
-                    SizedBox(
-                      child: BlueBox(),
-                      width: 150,
-                      height: 200,
-                    )
+                    Text("Hey",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: 'Futura',
+                            color: Colors.red)),
+                    Text(
+                      "Hey",
+                      style: TextStyle(
+                          fontSize: 40,
+                          fontFamily: 'Futura',
+                          color: Colors.green),
+                    ),
+                    Text("Hey",
+                        style: TextStyle(
+                            fontSize: 50,
+                            fontFamily: 'Futura',
+                            color: Colors.blue))
                   ],
-                ))));
-  }
-}
-
-class BlueBox extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: Colors.blue,
-        border: Border.all(),
-      ),
-    );
-  }
-}
-
-class BiggerBlueBox extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 200,
-      decoration: BoxDecoration(color: Colors.blue, border: Border.all()),
-    );
+                )))));
   }
 }
 
