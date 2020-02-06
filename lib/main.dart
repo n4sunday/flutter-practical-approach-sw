@@ -14,9 +14,11 @@ class MyApp extends StatelessWidget {
             ),
             body: Container(
                 color: Colors.white,
+                height: 200,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[BlueBox(), BlueBox(), BlueBox()],
+                  children: <Widget>[BlueBox(), BiggerBlueBox(), BlueBox()],
                 ))));
   }
 }
@@ -39,8 +41,8 @@ class BiggerBlueBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
-      height: 100,
+      width: 100,
+      height: 200,
       decoration: BoxDecoration(color: Colors.blue, border: Border.all()),
     );
   }
