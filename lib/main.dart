@@ -1,3 +1,73 @@
+import 'package:flutter/material.dart';
+
+void main()=> runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Test Row and Column",
+      home: Scaffold(
+        backgroundColor: Colors.yellowAccent,
+        appBar: AppBar(title: Text('Hello Flutter'),),
+        body: Row(children: <Widget>[
+
+        ],)
+      )
+    );
+  }
+}
+
+class BlueBox extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        border: Border.all(),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import 'package:flutter/material.dart';
 
 // void main() => runApp(MyApp());
