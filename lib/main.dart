@@ -18,7 +18,15 @@ class MyApp extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[BlueBox(), BiggerBlueBox(), BlueBox()],
+                  children: <Widget>[
+                    BlueBox(),
+                    BiggerBlueBox(),
+                    SizedBox(
+                      child: BlueBox(),
+                      width: 150,
+                      height: 200,
+                    )
+                  ],
                 ))));
   }
 }
