@@ -5,148 +5,21 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return (MaterialApp(
-        title: 'Text Text Widget',
+    return MaterialApp(
+        title: "Test Icon",
         home: Scaffold(
-            appBar: AppBar(title: Text('Text Widget')),
-            backgroundColor: Colors.yellowAccent,
+            backgroundColor: Colors.yellow,
+            appBar: AppBar(title: Text('Icon Widget')),
             body: Container(
-                color: Colors.white,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: <Widget>[
-                    Text("Hey",
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Futura',
-                            color: Colors.red)),
-                    Text(
-                      "Hey",
-                      style: TextStyle(
-                          fontSize: 40,
-                          fontFamily: 'Futura',
-                          color: Colors.green),
-                    ),
-                    Text("Hey",
-                        style: TextStyle(
-                            fontSize: 50,
-                            fontFamily: 'Futura',
-                            color: Colors.blue))
-                  ],
-                )))));
+              color: Colors.white,
+              child: Row(children: <Widget>[
+                Icon(Icons.beenhere, size: 50, color: Colors.amber),
+                Icon(Icons.bluetooth, size: 50, color: Colors.green),
+                Icon(Icons.cloud_upload, size: 50, color: Colors.red)
+              ]),
+            )));
   }
 }
-
-// import 'package:flutter/material.dart';
-
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Sunday',
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text('N4SX'),
-//           backgroundColor: Colors.blueGrey,
-//         ),
-//         backgroundColor: Colors.white,
-//         body: Row(
-//           mainAxisSize: MainAxisSize.min,
-//           children: <Widget>[
-//             BlueBox(),
-//             Column(
-//               children: <Widget>[BlueBox(), BlueBox()],
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-//--------------------------------------------------------
-// import 'package:flutter/material.dart';
-
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         title: 'Test mainAxisSize',
-//         home: Scaffold(
-//           appBar: AppBar(
-//               title: Text("mainAxisSize"), backgroundColor: Colors.black),
-//           backgroundColor: Colors.blueAccent,
-//           body: Container(
-//             color: Colors.white,
-//             child: Row(
-//               mainAxisSize: MainAxisSize.min,
-//               children: <Widget>[BlueBox(),BlueBox()],)
-//           )
-//         ));
-//   }
-// }
-// import 'package:flutter/material.dart';
-
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         title: 'Test mainAxisAlignment',
-//         home: Scaffold(
-//           appBar: AppBar(
-//             title: Text('mainAxisAlignment'),
-//           ),
-//           backgroundColor: Colors.yellow,
-//           body: Container(
-//               color: Colors.white,
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: <Widget>[BlueBox()],
-//               )),
-//         ));
-//   }
-// }
-
-// import 'package:flutter/material.dart';
-
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         title: 'AxisAlignment',
-//         home: Scaffold(
-//             appBar: AppBar(
-//               title: Text('Test CossAlignment'),
-//             ),
-//             body: Container(
-//                 color: Colors.white,
-//                 child: Row(
-//                   crossAxisAlignment: CrossAxisAlignment.end,
-//                   children: <Widget>[BlueBox(), BigBlueBox(), BlueBox()],
-//                 ))));
-//   }
-// }
-
-// class BlueBox extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 100,
-//       height: 100,
-//       decoration:
-//           BoxDecoration(color: Colors.indigo[200], border: Border.all()),
-//     );
-//   }
-// }
 
 // class BigBlueBox extends StatelessWidget {
 //   @override
