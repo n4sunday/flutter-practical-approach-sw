@@ -1,3 +1,4 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -6,128 +7,74 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Test Icon",
-        home: Scaffold(
-            backgroundColor: Colors.yellow,
-            appBar: AppBar(title: Text('Icon Widget')),
-            body: Container(
-              color: Colors.white,
-              child: Row(children: <Widget>[
-                Icon(Icons.beenhere, size: 50, color: Colors.amber),
-                Icon(Icons.bluetooth, size: 50, color: Colors.green),
-                Icon(Icons.cloud_upload, size: 50, color: Colors.red)
-              ]),
-            )));
+      title: "Test Icon",
+      home: RandomWords(),
+    );
   }
 }
 
-// class BigBlueBox extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 100,
-//       height: 200,
-//       decoration:
-//           BoxDecoration(color: Colors.indigo[200], border: Border.all()),
-//     );
-//   }runAppckgroundColor: Colors.greenAccent,
-//           body: Column(
-//             children: <Widget>[
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 children: [
-//                   Image.asset(
-//                     "assets/images/The-Witcher-3-Wild-Hunt-Review-6.jpg",
-//                     height: 250,
-//                   ),
-//                   Column(
-//                     children: <Widget>[
-//                       Text(
-//                         'Nattapon',
-//                         style: TextStyle(
-//                           color: Colors.black,
-//                           fontWeight: FontWeight.w800,
-//                           fontFamily: 'Roboto',
-//                           letterSpacing: 0.5,
-//                           fontSize: 20,
-//                         ),
-//                       ),
-//                       Text(
-//                         'Lueakaew',
-//                         style: TextStyle(
-//                           color: Colors.black,
-//                           fontWeight: FontWeight.w800,
-//                           fontFamily: 'Roboto',
-//                           letterSpacing: 0.5,
-//                           fontSize: 20,
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ));
-//   }
-// // }
+class RandomWords extends StatefulWidget {
+  @override
+  RandomWordsState createState() => RandomWordsState();
+}
 
-// import 'package:flutter/material.dart';
-// import 'package:english_words/english_words.dart';
+class RandomWordsState extends State<RandomWords> {
+  final List<WordPair> _suggestions = <WordPair>[];
+  final Set<WordPair> _saved = Set<WordPair>();
+  final TextStyle _biggerFont =
+      TextStyle(fontSize: 20, color: Colors.blueAccent);
 
-// void main() => runApp(MyApp());
+  Widget _buildSuggeston() {
+    return ListView.builder(
+      padding: EdgeInsets.all(10),
+      itemBuilder: (BuildContext _context, int i) {
+        if (i.isOdd) {
+          print("i in first if = $i\n");
+          return Divider(
+            color: Colors.grey,
+            thickness: 1,
+          );
+        }
+        final int index = i ~/ 2;
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     final wordPair = WordPair.random();
-//     return MaterialApp(
-//       title: 'Test StatefulWidget',
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text('STATEFULWIDGET'),
-//         ),
-//         body: Center(
-//           child: Text('Word: $wordPair '),
-//         ),
-//       ),
-//     );
-//   }
-// }
+        if (index >= _suggestions.length) {
+          print('i = $i\n');
+          print('index = $index\n');
+          _suggestions.addAll(generateWordPairs().take(10));
+        }
+        return _buildRow(_suggestions[index]);
+      },
+    );
+  }
 
-// }
+  Widget _buildRow(WordPair pair) {
+    final bool alreadySaved = _saved.contains(pair);
+    return ListTile(
+        title: Text(pair.asPascalCase, style: _biggerFont),
+        trailing: Icon(
+          alreadySaved ? Icons.favorite : Icons.favorite_border,
+          color: alreadySaved ? Colors.blueGrey : null,
+        ),
+        onTap: () {
+          setState(() {
+            if (alreadySaved) {
+              _saved.remove(pair);
+            } else {
+              _saved.add(pair);
+            }
+          });
+        });
+  }
 
-// import 'package:flutter/material.dart';
-// import 'package:english_words/english_words.dart';
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Name Generator"),
+      ),
+      backgroundColor: Colors.white,
+      body: _buildSuggeston(),
+    );
+  }
+}
 
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Test StatefulWidget',
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text('STATEFULWIDGET'),
-//         ),
-//         body: Center(
-//           child: RandomWords(),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class RandomWords extends StatefulWidget {
-//   @override
-//   RandomWordsState createState() => RandomWordsState();
-// }
-
-// class RandomWordsState extends State<RandomWords> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final wordPair = WordPair.random();
-//     return Text('Word: $wordPair ');
-//   }
-// }
