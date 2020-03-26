@@ -43,39 +43,6 @@ var headerSection = Container(
       ),
     ]));
 
-// class FooterMenu extends StatefulWidget {
-//   @override
-//   _FooterMenuState createState() => new _FooterMenuState();
-// }
-
-// class _FooterMenuState extends State<FooterMenu> {
-//   @override
-//   Widget buildFooter(BuildContext context) {
-//     return Container(
-//         child: SizedBox(
-//             child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: <Widget>[
-//           Container(
-//             width: 200,
-//             height: 100,
-//             color: Colors.green[300],
-//             child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: <Widget>[
-//                   RaisedButton(
-//                     onPressed: () {},
-//                     child: Text("Submit Order",
-//                         style:
-//                             TextStyle(fontSize: 20, color: Colors.blue[300])),
-//                   ),
-//                   Text(menu1.toString(), style: TextStyle(fontSize: 20)),
-//                 ]),
-//           )
-//         ])));
-//   }
-// }
-
 class ListMenu extends StatefulWidget {
   @override
   _ListMenuState createState() => new _ListMenuState();
@@ -87,10 +54,11 @@ class _ListMenuState extends State<ListMenu> {
   int menu3 = 0;
   int menu4 = 0;
   int menu5 = 0;
+  var opacity = 0.0;
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.yellow[100],
+        color: Colors.blue[100],
         height: 400,
         child: Column(children: <Widget>[buildListItem(), buildFooter()]));
   }
@@ -98,7 +66,7 @@ class _ListMenuState extends State<ListMenu> {
   Widget buildListItem() {
     return Container(
         height: 300,
-        color: Colors.yellow,
+        color: Colors.blue[100],
         child: ListView(scrollDirection: Axis.vertical, children: <Widget>[
           Column(children: <Widget>[
             Row(children: <Widget>[
@@ -315,17 +283,150 @@ class _ListMenuState extends State<ListMenu> {
                 width: 200,
                 height: 100,
                 color: Colors.green[300],
-                child: Row(
+                child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       RaisedButton(
-                        onPressed: () {},
+                        onPressed: () => (menu1 == 0 &&
+                                menu2 == 0 &&
+                                menu3 == 0 &&
+                                menu4 == 0 &&
+                                menu5 == 0)
+                            ? setState(() => opacity = 1.0)
+                            : {
+                                setState(() => opacity = 0.0),
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => listOrder()))
+                              },
                         child: Text("Submit Order",
                             style: TextStyle(
                                 fontSize: 20, color: Colors.blue[300])),
                       ),
+                      AnimatedOpacity(
+                        duration: Duration(seconds: 1),
+                        child: Column(
+                          children: <Widget>[
+                            Text("***Please Select Menu****",
+                                style: TextStyle(color: Colors.red)),
+                          ],
+                        ),
+                        opacity: opacity,
+                      )
                     ]),
               )
             ])));
+  }
+
+  Widget listOrder() {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Your Order"),
+        ),
+        body: Container(
+          child: Column(children: <Widget>[
+            (menu1 > 0)
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.fastfood,
+                            size: 40,
+                            color: Colors.grey,
+                          ),
+                          Padding(
+                              padding: EdgeInsets.all(15),
+                              child: Text("Menu 1"))
+                        ],
+                      ),
+                      Text(menu1.toString())
+                    ],
+                  )
+                : Column(),
+            (menu2 > 0)
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.fastfood,
+                            size: 40,
+                            color: Colors.grey,
+                          ),
+                          Padding(
+                              padding: EdgeInsets.all(15),
+                              child: Text("Menu 2"))
+                        ],
+                      ),
+                      Text(menu2.toString())
+                    ],
+                  )
+                : Column(),
+            (menu3 > 0)
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.fastfood,
+                            size: 40,
+                            color: Colors.grey,
+                          ),
+                          Padding(
+                              padding: EdgeInsets.all(15),
+                              child: Text("Menu 3"))
+                        ],
+                      ),
+                      Text(menu3.toString())
+                    ],
+                  )
+                : Column(),
+            (menu4 > 0)
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.fastfood,
+                            size: 40,
+                            color: Colors.grey,
+                          ),
+                          Padding(
+                              padding: EdgeInsets.all(15),
+                              child: Text("Menu 4"))
+                        ],
+                      ),
+                      Text(menu4.toString())
+                    ],
+                  )
+                : Column(),
+            (menu5 > 0)
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.fastfood,
+                            size: 40,
+                            color: Colors.grey,
+                          ),
+                          Padding(
+                              padding: EdgeInsets.all(15),
+                              child: Text("Menu 5"))
+                        ],
+                      ),
+                      Text(menu5.toString())
+                    ],
+                  )
+                : Column(),
+          ]),
+        ));
   }
 }
