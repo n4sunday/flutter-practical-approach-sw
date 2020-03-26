@@ -6,128 +6,326 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Test Icon",
+        title: "UI",
         home: Scaffold(
-            backgroundColor: Colors.yellow,
-            appBar: AppBar(title: Text('Icon Widget')),
-            body: Container(
-              color: Colors.white,
-              child: Row(children: <Widget>[
-                Icon(Icons.beenhere, size: 50, color: Colors.amber),
-                Icon(Icons.bluetooth, size: 50, color: Colors.green),
-                Icon(Icons.cloud_upload, size: 50, color: Colors.red)
-              ]),
-            )));
+          appBar: AppBar(title: Text("Work3 (20%)")),
+          body: ListView(children: <Widget>[headerSection, ListMenu()]),
+        ));
   }
 }
 
-// class BigBlueBox extends StatelessWidget {
+var headerSection = Container(
+    height: 210,
+    color: Colors.red,
+    child: Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+      Column(children: <Widget>[
+        Image.asset(
+          'assets/images/coc.jpg',
+          height: 210,
+          width: 210,
+        )
+      ]),
+      Padding(
+        padding: EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("CoC Resturant", style: TextStyle(fontSize: 20)),
+            Text("Phuket, Thailand 83120", style: TextStyle(fontSize: 14)),
+            Text(
+              "Nattapon Lueakaew",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Text("5935512004",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          ],
+        ),
+      ),
+    ]));
+
+// class FooterMenu extends StatefulWidget {
 //   @override
-//   Widget build(BuildContext context) {
+//   _FooterMenuState createState() => new _FooterMenuState();
+// }
+
+// class _FooterMenuState extends State<FooterMenu> {
+//   @override
+//   Widget buildFooter(BuildContext context) {
 //     return Container(
-//       width: 100,
-//       height: 200,
-//       decoration:
-//           BoxDecoration(color: Colors.indigo[200], border: Border.all()),
-//     );
-//   }runAppckgroundColor: Colors.greenAccent,
-//           body: Column(
-//             children: <Widget>[
-//               Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 children: [
-//                   Image.asset(
-//                     "assets/images/The-Witcher-3-Wild-Hunt-Review-6.jpg",
-//                     height: 250,
+//         child: SizedBox(
+//             child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//           Container(
+//             width: 200,
+//             height: 100,
+//             color: Colors.green[300],
+//             child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//                   RaisedButton(
+//                     onPressed: () {},
+//                     child: Text("Submit Order",
+//                         style:
+//                             TextStyle(fontSize: 20, color: Colors.blue[300])),
 //                   ),
-//                   Column(
-//                     children: <Widget>[
-//                       Text(
-//                         'Nattapon',
-//                         style: TextStyle(
-//                           color: Colors.black,
-//                           fontWeight: FontWeight.w800,
-//                           fontFamily: 'Roboto',
-//                           letterSpacing: 0.5,
-//                           fontSize: 20,
-//                         ),
-//                       ),
-//                       Text(
-//                         'Lueakaew',
-//                         style: TextStyle(
-//                           color: Colors.black,
-//                           fontWeight: FontWeight.w800,
-//                           fontFamily: 'Roboto',
-//                           letterSpacing: 0.5,
-//                           fontSize: 20,
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ));
-//   }
-// // }
-
-// import 'package:flutter/material.dart';
-// import 'package:english_words/english_words.dart';
-
-// void main() => runApp(MyApp());
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     final wordPair = WordPair.random();
-//     return MaterialApp(
-//       title: 'Test StatefulWidget',
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text('STATEFULWIDGET'),
-//         ),
-//         body: Center(
-//           child: Text('Word: $wordPair '),
-//         ),
-//       ),
-//     );
+//                   Text(menu1.toString(), style: TextStyle(fontSize: 20)),
+//                 ]),
+//           )
+//         ])));
 //   }
 // }
 
-// }
+class ListMenu extends StatefulWidget {
+  @override
+  _ListMenuState createState() => new _ListMenuState();
+}
 
-// import 'package:flutter/material.dart';
-// import 'package:english_words/english_words.dart';
+class _ListMenuState extends State<ListMenu> {
+  int menu1 = 0;
+  int menu2 = 0;
+  int menu3 = 0;
+  int menu4 = 0;
+  int menu5 = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Colors.yellow[100],
+        height: 400,
+        child: Column(children: <Widget>[buildListItem(), buildFooter()]));
+  }
 
-// void main() => runApp(MyApp());
+  Widget buildListItem() {
+    return Container(
+        height: 300,
+        color: Colors.yellow,
+        child: ListView(scrollDirection: Axis.vertical, children: <Widget>[
+          Column(children: <Widget>[
+            Row(children: <Widget>[
+              Image.asset('assets/images/Menu1.jpg'),
+              SizedBox(
+                width: 140,
+                child: Column(children: <Widget>[
+                  Text("Menu 1", style: TextStyle(fontSize: 14)),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () =>
+                                  menu1 > 0 ? setState(() => menu1--) : '',
+                              child: const Icon(
+                                Icons.remove,
+                                size: 14,
+                              ),
+                            )),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text(menu1.toString(),
+                              style: TextStyle(fontSize: 20)),
+                        ),
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () => setState(() => menu1++),
+                              child: const Icon(
+                                Icons.add,
+                                size: 14,
+                              ),
+                            )),
+                      ])
+                ]),
+              )
+            ]),
+          ]),
+          Column(children: <Widget>[
+            Row(children: <Widget>[
+              Image.asset('assets/images/Menu2.jpg'),
+              SizedBox(
+                width: 140,
+                child: Column(children: <Widget>[
+                  Text("Menu 2", style: TextStyle(fontSize: 14)),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () =>
+                                  menu2 > 0 ? setState(() => menu2--) : '',
+                              child: const Icon(
+                                Icons.remove,
+                                size: 14,
+                              ),
+                            )),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text(menu2.toString(),
+                              style: TextStyle(fontSize: 20)),
+                        ),
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () => setState(() => menu2++),
+                              child: const Icon(
+                                Icons.add,
+                                size: 14,
+                              ),
+                            )),
+                      ])
+                ]),
+              )
+            ]),
+          ]),
+          Column(children: <Widget>[
+            Row(children: <Widget>[
+              Image.asset('assets/images/Menu3.jpg'),
+              SizedBox(
+                width: 140,
+                child: Column(children: <Widget>[
+                  Text("Menu 3", style: TextStyle(fontSize: 14)),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () =>
+                                  menu3 > 0 ? setState(() => menu3--) : '',
+                              child: const Icon(
+                                Icons.remove,
+                                size: 14,
+                              ),
+                            )),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text(menu3.toString(),
+                              style: TextStyle(fontSize: 20)),
+                        ),
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () => setState(() => menu3++),
+                              child: const Icon(
+                                Icons.add,
+                                size: 14,
+                              ),
+                            )),
+                      ])
+                ]),
+              )
+            ]),
+          ]),
+          Column(children: <Widget>[
+            Row(children: <Widget>[
+              Image.asset('assets/images/Menu4.jpg'),
+              SizedBox(
+                width: 140,
+                child: Column(children: <Widget>[
+                  Text("Menu 4", style: TextStyle(fontSize: 14)),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () =>
+                                  menu4 > 0 ? setState(() => menu4--) : '',
+                              child: const Icon(
+                                Icons.remove,
+                                size: 14,
+                              ),
+                            )),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text(menu4.toString(),
+                              style: TextStyle(fontSize: 20)),
+                        ),
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () => setState(() => menu4++),
+                              child: const Icon(
+                                Icons.add,
+                                size: 14,
+                              ),
+                            )),
+                      ])
+                ]),
+              )
+            ]),
+          ]),
+          Column(children: <Widget>[
+            Row(children: <Widget>[
+              Image.asset('assets/images/Menu5.jpg'),
+              SizedBox(
+                width: 140,
+                child: Column(children: <Widget>[
+                  Text("Menu 5", style: TextStyle(fontSize: 14)),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () =>
+                                  menu5 > 0 ? setState(() => menu5--) : '',
+                              child: const Icon(
+                                Icons.remove,
+                                size: 14,
+                              ),
+                            )),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text(menu5.toString(),
+                              style: TextStyle(fontSize: 20)),
+                        ),
+                        SizedBox(
+                            width: 40,
+                            child: RaisedButton(
+                              onPressed: () => setState(() => menu5++),
+                              child: const Icon(
+                                Icons.add,
+                                size: 14,
+                              ),
+                            )),
+                      ])
+                ]),
+              )
+            ]),
+          ]),
+        ]));
+  }
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Test StatefulWidget',
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text('STATEFULWIDGET'),
-//         ),
-//         body: Center(
-//           child: RandomWords(),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class RandomWords extends StatefulWidget {
-//   @override
-//   RandomWordsState createState() => RandomWordsState();
-// }
-
-// class RandomWordsState extends State<RandomWords> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final wordPair = WordPair.random();
-//     return Text('Word: $wordPair ');
-//   }
-// }
+  Widget buildFooter() {
+    return Container(
+        height: 100,
+        color: Colors.white,
+        child: SizedBox(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+              Container(
+                width: 200,
+                height: 100,
+                color: Colors.green[300],
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      RaisedButton(
+                        onPressed: () {},
+                        child: Text("Submit Order",
+                            style: TextStyle(
+                                fontSize: 20, color: Colors.blue[300])),
+                      ),
+                    ]),
+              )
+            ])));
+  }
+}
